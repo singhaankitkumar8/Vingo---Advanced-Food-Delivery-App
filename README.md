@@ -16,6 +16,14 @@ Vingo is a full-stack **MERN-based food delivery application** that blends moder
 * 📦 Real-time delivery tracking
 * 🔑 OTP-based secure delivery confirmation
 
+  ### 💳 Payment Options
+- 💰 **Cash on Delivery (COD)** — Pay at the time of delivery
+- 💳 **Online Payment via Razorpay**
+  - Secure checkout
+  - Supports UPI, Cards, Net Banking, Wallets
+  - Fast and reliable transactions
+
+
 ---
 
 ### 🏪 Restaurant Owner (Admin)
@@ -54,6 +62,10 @@ Vingo is a full-stack **MERN-based food delivery application** that blends moder
 * MongoDB (Mongoose)
 * JWT Authentication
 * Cloudinary (Media Uploads)
+
+### Payment Integration
+- Razorpay (Online Payments)
+- COD (Cash Handling System)
 
 ### Other Tools
 
