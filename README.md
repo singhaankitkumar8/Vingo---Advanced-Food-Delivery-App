@@ -1,6 +1,6 @@
-# 🍔 Vingo — Advanced Food Delivery Platform
+# 🍔 ReelBites — Advanced Food Delivery Platform
 
-Vingo is a full-stack **MERN-based food delivery application** that blends modern food ordering with social media-style engagement. It allows restaurant owners to manage listings, users to explore food through reels, and delivery partners to handle logistics efficiently.
+ReelBites is a full-stack **MERN-based food delivery application** that blends modern food ordering with social media-style engagement. It allows restaurant owners to manage listings, users to explore food through reels, and delivery partners to handle logistics efficiently.
 
 ---
 
@@ -240,7 +240,7 @@ npm run dev
 
 ## 👨‍💻 Author
 
-**Anshu Singha**
+**Ankit Kumar Singha**
 
 ---
 
