@@ -18,7 +18,7 @@ const server=http.createServer(app)
 const io=new Server(server,{
      cors: {
     origin: process.env.FRONTEND_URL, // in production specific domain 
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST","DELETE"],
     credentials: true  
   }
 })
