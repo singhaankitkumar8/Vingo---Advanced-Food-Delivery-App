@@ -11,6 +11,7 @@ export default function MyOrders() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [selectedRating , setSelectedRating] = useState({})   //itemId:rating
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -47,6 +48,18 @@ export default function MyOrders() {
       year: "numeric",
     });
   };
+
+
+  const handleRating = async (itemId,rating) => {
+    try {
+      const result = await axios.post(`${serverUrl}/api/item/rating`,{itemId,rating} , {withCredentials:true})
+      setSelectedRating(prev => ({
+        ...prev,[itemId]:rating
+      }))
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   if (!loading && myOrders?.length === 0) {
     return (
@@ -131,6 +144,15 @@ export default function MyOrders() {
                         <p className="text-xs text-gray-500">
                           Qty: {item?.quantity} × ₹{item?.price}
                         </p>
+
+                          {shopOrder.status == "delivered" && <div className="flex space-x-1 mt-2">
+                          {[1,2,3,4,5].map((star) => (
+                            <button className={`text-lg ${selectedRating[item.item._id] >= star? 'text-yellow-400':'text-gray-400'}`} 
+                            onClick={() => handleRating(item.item._id,star)}>★</button>
+                          ))}
+                            </div>}
+
+
                       </div>
                     ))}
                   </div>
