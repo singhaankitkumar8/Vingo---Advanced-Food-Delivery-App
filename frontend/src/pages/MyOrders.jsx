@@ -147,7 +147,7 @@ export default function MyOrders() {
 
                           {shopOrder.status == "delivered" && <div className="flex space-x-1 mt-2">
                           {[1,2,3,4,5].map((star) => (
-                            <button className={`text-lg ${selectedRating[item.item._id] >= star? 'text-yellow-400':'text-gray-400'}`} 
+                            <button key={star} className={`text-lg ${(selectedRating[item.item._id] || 0) >= star? 'text-yellow-400':'text-gray-400'}`} 
                             onClick={() => handleRating(item.item._id,star)}>★</button>
                           ))}
                             </div>}
