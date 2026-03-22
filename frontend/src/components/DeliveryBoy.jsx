@@ -57,6 +57,8 @@ export default function DeliveryBoy() {
     }
   }, [currentOrder]);
 
+  
+
   // 🔹 Fetch available assignments
   useEffect(() => {
     const fetchAssignments = async () => {
@@ -111,6 +113,10 @@ export default function DeliveryBoy() {
     return () => clearInterval(interval);
   }, []);
 
+    const ratePerDelivery = 50;
+    const totalEarnings = todayStats.reduce((sum,d) => sum + d.count*ratePerDelivery, 0)
+
+   
   // 🔹 Accept assignment
   const acceptOrder = async (id) => {
     try {
@@ -211,6 +217,11 @@ export default function DeliveryBoy() {
               <Bar dataKey="count" fill={PRIMARY} />
             </BarChart>
           </ResponsiveContainer>
+
+          <div className="max-w-sm mx-auto mt-6 p-6 bg-white rounded-2xl shadow-lg text-center">
+            <h1 className="text-xl font-semibold text-gray-800 mb-2">Today's Earning</h1>
+            <span className="text-3xl font-bold text-green-600">₹{totalEarnings}</span>
+          </div>
         </div>
 
         {/* Current Order */}
