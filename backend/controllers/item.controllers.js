@@ -175,16 +175,16 @@ export const deleteItem=async (req,res) => {
 
 export const rating = async (req,res) => {
     try {
-        const {itemid,rating } = req.body
+        const {itemId,rating } = req.body
 
-        if(!itemid || !rating){
+        if(!itemId || !rating){
             return res.status(400).json({message:"ItemId and rating is required"})
         }
         if(rating<1 || rating>5){
             return res.status(400).json({message:"Rating must be between 1 to 5"})
         }
 
-        const item = await Item.findById(itemid)
+        const item = await Item.findById(itemId)
 
         if(!item){
             return res.status(400).json({message:"Item Not found"})
