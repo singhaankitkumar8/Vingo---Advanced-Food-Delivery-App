@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import Nav from "./Nav";
 import { serverUrl } from "../App";
 import DeliveryBoyTracking from "../pages/DeliveryBoyTracking";
+import { ClipLoader } from "react-spinners";
+
 import {
   BarChart,
   Bar,
@@ -25,6 +27,8 @@ export default function DeliveryBoy() {
   const { userData } = useSelector((state) => state.user);
   const [showOtpBox, setShowOtpBox] = useState(false);
   const [otp, setOtp] = useState("");
+  const [loading,setLoading] = useState(false)
+  
 
   // 🔹 Track browser GPS and update backend
   useEffect(() => {
@@ -136,6 +140,7 @@ export default function DeliveryBoy() {
 
   // 🔹 Send OTP request
   const sendOtp = async () => {
+    setLoading(true)
     try {
       const res = await axios.post(
         `${serverUrl}/api/order/send-otp`,
@@ -145,6 +150,7 @@ export default function DeliveryBoy() {
         },
         { withCredentials: true }
       );
+      setLoading(false)
 
       if (res.data.success) {
         setShowOtpBox(true);
@@ -153,6 +159,7 @@ export default function DeliveryBoy() {
     } catch (err) {
       console.error(err);
       alert("Failed to send OTP");
+      setLoading(false)
     }
   };
 
@@ -244,8 +251,9 @@ export default function DeliveryBoy() {
               <button
                 className="mt-4 w-full bg-green-500 text-white font-semibold py-2 px-4 rounded-xl shadow-md hover:bg-green-600 active:scale-95 transition-all duration-200"
                 onClick={sendOtp}
+                disabled={loading}
               >
-                ✅ Mark As Delivered
+                {loading ?<ClipLoader size={20} color='white'/> :"✅ Mark As Delivered"}
               </button>
             ) : (
               <div className="mt-4 p-4 border rounded-xl bg-gray-50">
